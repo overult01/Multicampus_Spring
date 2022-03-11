@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 1. xml태그로만  -->
+<bean id ="testservice" class ="di_exam.TestServiceImpl">
+	<property name = "dao" ref = "testdao" />
+</bean>
+
+<bean id = "testdao" class = "di_exam.TestDAO" >
+	<property name = "vo" ref = "testvo"/>
+</bean>	
+
+<bean id = "testvo" class = "di_exam.TestVO">
+	<property name = "member1" value = "test1" />
+	<property name = "member2" value = "test2" />
+</bean>
+
+<!-- 2. di_exam 복사 -> annotation.di_exam 패키지. java annotation 방식 -->
+
+</beans>

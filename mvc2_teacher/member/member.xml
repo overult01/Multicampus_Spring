@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dto1"  class="member.MemberDTO" > <!-- MemberDTO dto = new MemberDTO();-->
+		<property name="id" value="jsp" />		<!-- dto.setId("jsp");-->
+		<property name="password" value="1234" /><!-- dto.setPassword("1234"); -->
+		<property name="name" value="홍길동" /> <!-- 		dto.setName("홍길동"); -->
+		<property name="phone" value="010-1111-2222" />	<!-- dto.setPhone("010-1111-2222"); -->	
+		<property name="email" value="spring@io" /><!-- dto.setEmail("spring@io"); -->
+		<property name="address" value="서울시" /><!-- dto.setAddress("서울시"); -->
+	</bean>
+
+	<bean id="dto2"  class="member.MemberDTO" > <!-- MemberDTO dto = new MemberDTO();-->
+		<property name="id" value="spring" />		<!-- dto.setId("jsp");-->
+		<property name="password" value="1234" /><!-- dto.setPassword("1234"); -->
+		<property name="name" value="홍길동" /> <!-- 		dto.setName("홍길동"); -->
+		<property name="phone" value="010-1111-2222" />	<!-- dto.setPhone("010-1111-2222"); -->	
+		<property name="email" value="spring@io" /><!-- dto.setEmail("spring@io"); -->
+		<property name="address" value="서울시" /><!-- dto.setAddress("서울시"); -->
+	</bean>
+
+	<bean id="dto3"  class="member.MemberDTO" > 
+		<constructor-arg name="id" value="servlet" />
+		<constructor-arg name="password" value="1234" />
+	</bean>
+		
+<bean id="dao" class="member.MemberDAO" >
+	<property name="dto" ref="dto3"></property>
+</bean>
+<!-- 		MemberDAO dao = new MemberDAO();
+		dao.setDto(dto); -->
+
+
+</beans>
+
+
+
