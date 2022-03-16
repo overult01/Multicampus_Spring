@@ -1,4 +1,4 @@
-package tv;
+package ch19.tv;
 
 public class TVUser {
 // 커플링(의존도) 높다. 한 부분이 바뀌면 나머지 부분이 변경되어야 하는 경우.

@@ -1,4 +1,4 @@
-package spring.tv;
+package ch19.spring.tv;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

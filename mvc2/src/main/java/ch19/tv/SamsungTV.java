@@ -1,4 +1,4 @@
-package tv;
+package ch19.tv;
 
 public class SamsungTV implements tv {
 	public void powerOn() {

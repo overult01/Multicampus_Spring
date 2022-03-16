@@ -1,4 +1,4 @@
-package spring.tv;
+package ch19.spring.tv;
 
 public class SamsungTV implements tv {
 	

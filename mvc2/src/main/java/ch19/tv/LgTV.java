@@ -1,4 +1,4 @@
-package tv;
+package ch19.tv;
 
 public class LgTV implements tv{
 	public void soundUp() {

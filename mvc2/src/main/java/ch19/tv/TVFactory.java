@@ -1,4 +1,4 @@
-package tv;
+package ch19.tv;
 
 public class TVFactory {
 	// 사용자의 요청을 받아서 tv객체 생성
