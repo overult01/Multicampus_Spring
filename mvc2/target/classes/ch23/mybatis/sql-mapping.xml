@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- sql문만 작성  -->
+<mapper namespace = "member">
+
+<!-- 직접호출하는 모든 마이바티스 태그에서 id 속성은 필수. id속성을 Main에서 호출해야 실행된다.  -->
+ 
+<!-- select태그는 select문 실행. id속성(필수)으로 자바에서 불러올 수 있음  -->
+<select id="memberlist" resultType="memberdto"> <!-- resultType: 실제패키지.실제클래스 or config.xml에서 typeAliases태그에 지정한 alias사용 가능. 조회 결과의 1개 행(레코드) 어떤 타입으로 받을 것인지. -->
+	select * from member_table
+</select>
+
+<!-- insert태그는 id속성 필수 , resultType은 필요 없다, parameterType: db에 저장할 데이터 타입  -->
+<insert id="insertmember" parameterType="memberdto">
+<!-- 	자바스크립트에서 동적으로 값 받아와서 DB에 저장하기  -->
+<!-- #{} 은 마이바티스에서 전달한 변수라는 뜻(getter메서드 역할). memberDTO에 선언된 변수 이름과 같아야  -->
+	insert into member_table values(#{id}, #{password}, #{name}, #{phone}, #{email}, #{address})
+
+</insert>
+
+<!-- parameter 속성은 무조건 1개만 들어가야. 여러개를 전달하고 싶으면 객체, 배열, 리스트, 맵이 와야 한다. -->
+<update id="updatemember" parameterType="memberdto">
+	update member_table set name = #{name}, address = #{address} where id = #{id}
+</update>
+
+<!-- 파라미터 1개만 저장할 것이므로 parameterType을 String으로 줌. #{}변수이름도 마음대로 줘도 된다.  -->
+<delete id="deletemember" parameterType="String">
+	delete from member_table where id = #{i}
+</delete>
+
+<select id="member" resultType="memberdto" parameterType="String">
+	select * from member_table where id = #{i}
+</select>
+
+<!-- int[] 로 int 두 개 받아오기. parameterType="int[]"속성 생략해도 된다. -->
+<select id="paginglist" resultType = "memberdto" >
+	select * from member_table limit
+	<foreach collection="array" item="num" separator = ","> <!-- 마이바티스의 foreach는 다른 태그의 내부에서 사용된다. 배열일 때 collection은 array로 고정. separator : 뭘로 구분할 거냐-->
+		#{num}
+	</foreach> <!-- foreach태그는 직접호출하는 것이 아니므로 id 불필요  -->
+</select>
+
+<!-- 마이바티스는 parameterType의 첫 문자가 대문자면 클래스로 인식. 따라서 String[]은 인식 못한다.
+foreach태그에 collection="array" 쓰면 배열받는 것으로 인식되어 파라미터타입 필요없어서 생략할 수 있게 된다.-->
+<select id="addresssearch" resultType="String">
+	select id from member_table where address in 
+	<foreach collection="array" item = "add" open="(" close=")" separator =","> <!-- in(서울,부산) 형식 만들기  -->
+		#{add}
+	</foreach>
+</select>
+
+
+
+</mapper>
