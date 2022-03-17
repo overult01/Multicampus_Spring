@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+  <!-- mybatis db 연결정보 세팅 파일 -->
+<configuration>
+
+<!-- 1. sql 실행 결과를 xxxDTO로 매핑  -->
+<typeAliases>
+	<typeAlias type="ch24.spring.mybatis.MemberDTO" alias = "memberdto"/> <!-- type: 실제 패키지명.실제클래스명  alias: 별명 -->
+</typeAliases>
+
+<!-- spring-mybatis로 2,3번 이동  -->
+<!-- 2. DataSource(연결, 여러개 생성해서 공유) -->
+<!-- <environments default="development">
+	<environment id="development">
+		<transactionManager type="JDBC" />	트랜젝션은 jdbc에 따르겠다 
+		<dataSource type="POOLED">
+			<property name="driver" value="com.mysql.cj.jdbc.Driver"/> value: mysql드라이버이름 
+			<property name="url" value="jdbc:mysql://127.0.0.1:3306/employeesdb"/>
+			<property name="username" value="emp"/>
+			<property name="password" value="12345678"/>
+		</dataSource>
+	</environment>
+</environments>
+ -->
+<!-- 3. sql정의 파일명 설정  -->
+<!-- <mappers>
+	<mapper resource = "mybatis/sql-mapping.xml"/> 기능별로 sql문이 여러개 있으면 여러개 mapper파일 설정 가능 
+</mappers>
+ -->
+</configuration>
