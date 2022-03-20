@@ -27,6 +27,9 @@ public class LoginAjaxController {
 	public String loginform() {
 		return "ch29_ajax/login"; // @RequestMapping이 붙어있고, @ResponseBody가 안붙어있고, 리턴타입이 void면 value속성의 url로 뷰를 자동 지정하는 것.
 	}
+
+	
+	
 	
 	// 로그인을 ajax로 처리하는 메서드 
 	@RequestMapping(value = "/ajax/login", method = RequestMethod.POST, produces = {"application/json;charset=utf-8"}) // produces 속성내용: 전달하는 형식은 json, 인코딩은 utf-8
