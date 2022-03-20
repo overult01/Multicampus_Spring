@@ -1,4 +1,4 @@
-package memberservice_nondb;
+package ch22.spring_jdbc.memberservice_nonjdbc;
 
 public class MemberServiceImpl2 implements MemberService{
 	MemberDAO dao;
@@ -6,7 +6,7 @@ public class MemberServiceImpl2 implements MemberService{
 		this.dao = dao;
 	}
 	@Override
-	public void regiterMember() {
+	public void registerMember() {
 		boolean result = dao.selectMember(); 
 		if(!result) {
 			dao.insertMember();

@@ -1,6 +1,6 @@
-package memberservice_nondb;
+package ch22.spring_jdbc.memberservice_nonjdbc;
 
 public interface MemberService {
-	void regiterMember();
+	void registerMember();
 	void login();
 }

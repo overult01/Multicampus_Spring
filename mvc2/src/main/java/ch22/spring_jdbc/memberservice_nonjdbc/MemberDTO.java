@@ -1,4 +1,4 @@
-package memberservice_nondb;
+package ch22.spring_jdbc.memberservice_nonjdbc;
 
 public class MemberDTO {
 	String id, password, name, phone, email, address;
