@@ -2,8 +2,6 @@ package ch19.spring.tv;
 
 public class LgTV implements tv{
 	
-	
-	
 	public LgTV() {
 		super();
 		System.out.println("lgtv - 생성자 호출");		
