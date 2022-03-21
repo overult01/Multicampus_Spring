@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+<!-- mvc에서는 사용. 스프링부트에서는 삭제 파일  -->
+
+<!-- 1, 2번은 mybatis-config.xml 에서 왔다 (mybatis -> spring) -->
+<!-- 1. mybatis datasource - spring datasource 설정 -->
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+			<property name="url" value="jdbc:mysql://127.0.0.1:3306/employeesdb"/>	
+			<property name="username" value="emp"/>
+			<property name="password" value="12345678"/>		
+</bean>
+
+<!-- 2. sql 매핑 파일명 설정 , 마이바티스설정파일명 설정 -->
+<bean id = "sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
+	<property name="dataSource" ref="dataSource"/>
+	<property name="configLocation" value="classpath:ch24/spring/mybatis/mybatis-config.xml"/> <!-- classpath: 은 src/main을 대신하는 것  -->
+	<property name="mapperLocations" value="classpath:ch24/spring/mybatis/sql-mapping.xml"/>
+</bean>
+
+<!-- 3. mybatis SqlSession 객체 생성 설정 -> spring에서는 SqlSessionTemplate으로 명칭 -> 자바파일에서 어노테이션으로 대체  -->
+<bean id = "sqlSession" class ="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg ref="sqlSessionFactory"/>
+</bean>
+
+<!-- 4. annotation scan 태그 설정  -> 자바파일에서 어노테이션으로 대체 -->
+<context:component-scan base-package="ch24.spring.mybatis" />
+</beans>
