@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- sql문의 태그 id = ProductDAO 메서드 이름이 동일하면 자동 호출된다. -->
+<mapper namespace = "spring.mybatis.product.ProductDAO">
+<!-- mybatis-config에서 typealias 설정해주었다. -->
+<select id ="productlist" resultType="productdto">
+select productcode, productname, price,company, balance, 
+date_format(regdate, '%Y년도 %m월 %d일') as regdate 
+from product
+</select>
+
+<select id ="product" resultType="productdto" parameterType="int">
+select productcode, productname, price 
+from product where productcode = #{code}
+</select>
+
+
+</mapper>
